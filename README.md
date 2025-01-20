@@ -1,0 +1,2 @@
+# NShell-config
+ 
