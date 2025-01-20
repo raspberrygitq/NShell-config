@@ -1,2 +1,2 @@
-# NShell-config
+# Nilesoft Shell config
  
