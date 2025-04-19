@@ -13,6 +13,7 @@ menu(where=@(this.count == 0) type='taskbar' image=icon.settings expanded=true)
 	
 	item(title="Wiersz polecenia" tip=tip_run_admin admin=has_admin image=icon.command_prompt cmd='cmd.exe' args='/K TITLE Wiersz polecenia &ver& PUSHD "@sel.dir"')
 	item(title="Windows PowerShell" admin=has_admin tip=tip_run_admin image=icon.windows_powershell cmd='powershell.exe' args='-noexit -command Set-Location -Path "@sel.dir\."')
+	item(title="Edytor rejestru" admin=has_admin cmd='regedit.exe')
 	sep
 	menu(title=title.windows image=\uE1FB)
 	{
