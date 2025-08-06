@@ -13,6 +13,7 @@ menu(where=@(this.count == 0) type='taskbar' image=icon.settings expanded=true)
 	
 	item(title="Wiersz polecenia" tip=tip_run_admin admin=has_admin image=icon.command_prompt cmd='cmd.exe' args='/K TITLE Wiersz polecenia &ver& PUSHD "@sel.dir"')
 	item(title="Windows PowerShell" admin=has_admin tip=tip_run_admin image=icon.windows_powershell cmd='powershell.exe' args='-noexit -command Set-Location -Path "@sel.dir\."')
+	item(title="Menedżer zadań (Legacy)" image=icon.task_manager cmd='taskmgr.exe' args='-d')
 	item(title="Edytor rejestru" admin=has_admin cmd='regedit.exe')
 	sep
 	menu(title=title.windows image=\uE1FB)
@@ -20,8 +21,8 @@ menu(where=@(this.count == 0) type='taskbar' image=icon.settings expanded=true)
 	item(title="Ułóż okna kaskadowo" cmd=command.cascade_windows)
 	item(title="Ułóż okna jedno na drugim" cmd=command.Show_windows_stacked)
 	item(title="Ułóż okna obok siebie" cmd=command.Show_windows_side_by_side)
-//	item(title="Zminimazuj wszystkie okna" cmd=command.minimize_all_windows)
-//	item(title="Przywróć wszystkie okna" cmd=command.restore_all_windows)
+	item(title="Zminimazuj wszystkie okna" cmd=command.minimize_all_windows)
+	item(title="Przywróć wszystkie okna" cmd=command.restore_all_windows)
 	}
 	item(title="Pokaż pulpit" image=icon.desktop cmd=command.toggle_desktop)
 	sep
