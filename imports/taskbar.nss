@@ -6,15 +6,18 @@ menu(where=@(this.count == 0) type='taskbar' image=icon.settings expanded=true)
 	item(title="Menedżer urządzeń" image=icon.device_manager cmd='devmgmt.msc')
 	item(title="Zarządzanie dyskami" image=icon.disk_management cmd='diskmgmt.msc')
 	item(title="Zarządzanie komputerem" image=icon.display_settings cmd='compmgmt.msc')
-	item(title="Panel sterowania" image=icon.settings(auto, image.color1) cmd='control.exe')
+	item(title="Panel sterowania" image cmd='control.exe')
+	item(title=title.settings image=inherit cmd='ms-settings:')
 	sep
-	$tip_run_admin=["\xE1A7 Naciśnij Shift aby uruchomić " + this.title + " jako administrator", tip.warning, 1.0]
+	$tip_run_admin=["\xE1A7 Naciśnij Shift lub PPM aby uruchomić " + this.title + " jako administrator", tip.warning, 1.0]
 	$has_admin=key.shift() or key.rbutton()
 	
-	item(title="Wiersz polecenia" tip=tip_run_admin admin=has_admin image=icon.command_prompt cmd='cmd.exe' args='/K TITLE Wiersz polecenia &ver& PUSHD "@sel.dir"')
-	item(title="Windows PowerShell" admin=has_admin tip=tip_run_admin image=icon.windows_powershell cmd='powershell.exe' args='-noexit -command Set-Location -Path "@sel.dir\."')
-	item(title="Menedżer zadań (Legacy)" image=icon.task_manager cmd='taskmgr.exe' args='-d')
-	item(title="Edytor rejestru" admin=has_admin cmd='regedit.exe')
+	menu(title=title.terminal image=icon.run_with_powershell)
+	{
+	item(title="Wiersz polecenia" tip=tip_run_admin admin=has_admin image cmd='cmd.exe' args='/K TITLE Wiersz polecenia &ver& PUSHD "@sel.dir"')
+	item(title="Windows PowerShell" admin=has_admin tip=tip_run_admin image cmd='powershell.exe' args='-noexit -command Set-Location -Path "@sel.dir\."')
+	item(where=package.exists("WindowsTerminal") title=title.Windows_Terminal tip=tip_run_admin admin=has_admin image='@package.path("WindowsTerminal")\WindowsTerminal.exe' cmd='wt.exe' arg='-d "@sel.path\."')
+	}
 	sep
 	menu(title=title.windows image=\uE1FB)
 	{
@@ -26,8 +29,8 @@ menu(where=@(this.count == 0) type='taskbar' image=icon.settings expanded=true)
 	}
 	item(title="Pokaż pulpit" image=icon.desktop cmd=command.toggle_desktop)
 	sep
-	item(title=title.settings image=icon.settings(auto, image.color1) cmd='ms-settings:')
 	item(title="Menedżer zadań" image=icon.task_manager cmd='taskmgr.exe')
+	item(title="Menedżer zadań (Legacy)" image cmd='taskmgr.exe' args='-d')
 	item(title="Ustawienia paska zadań" image=inherit cmd='ms-settings:taskbar')
 	item(vis=key.shift() title="Uruchom ponownie Explorer" sep=both image=icon.refresh cmd=command.restart_explorer)
 }

@@ -6,7 +6,7 @@
 	background
 	{
 		color=auto
-		opacity=30
+		opacity=0
 		effect=acrylic
 	}
 	image.align=2

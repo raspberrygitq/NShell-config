@@ -21,5 +21,5 @@ menu(mode="multiple" title=title.more_options image=icon.more_options)
 {
 }
 
-//import 'imports/terminal.nss'
+import 'imports/terminal.nss'
 import 'imports/taskbar.nss'
